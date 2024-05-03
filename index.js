@@ -1,10 +1,15 @@
-function findMin(nums) {
-  let left = 0;
-  let right = nums.length - 1;
-  while (left < right) {
-    const mid = Math.floor((left + right) / 2);
-    if (nums[mid] > nums[right]) left = mid + 1;
-    else right = mid;
+function removeNthFromEnd(head, n) {
+  const dummy = new ListNode(0);
+  dummy.next = head;
+  let first = dummy;
+  let second = dummy;
+  for (let i = 0; i <= n; i++) {
+    first = first.next;
   }
-  return nums[left];
+  while (first !== null) {
+    first = first.next;
+    second = second.next;
+  }
+  second.next = second.next.next;
+  return dummy.next;
 }
